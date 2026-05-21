@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Prudence ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+
+    overflow:hidden;
+
+    width:100vw;
+    height:100vh;
+
+    background:
+    linear-gradient(
+    to bottom,
+    #140516,
+    #2b0b2e,
+    #4d145c
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+}
+
+/* MOON */
+
+.moon{
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    border-radius:50%;
+
+    background:#ffe3f3;
+
+    top:40px;
+    right:60px;
+
+    box-shadow:
+    0 0 40px #ffe3f3,
+    0 0 100px #ff8fd2;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    animation:
+    moonGlow 3s infinite alternate;
+}
+
+.moon span{
+
+    color:#ff1493;
+
+    font-size:1.2rem;
+
+    font-weight:bold;
+
+    line-height:1.7;
+
+    text-shadow:
+    0 0 10px white,
+    0 0 20px white;
+}
+
+@keyframes moonGlow{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.05);
+    }
+}
+
+/* STARS */
+
+.stars{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+}
+
+.star{
+
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    background:white;
+
+    border-radius:50%;
+
+    animation:
+    twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:0.3;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+/* FLOATING */
+
+.float{
+
+    position:absolute;
+
+    animation:
+    float 7s linear infinite;
+
+    pointer-events:none;
+}
+
+@keyframes float{
+
+    0%{
+        transform:
+        translateY(100vh);
+
+        opacity:0;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translateY(-120vh);
+
+        opacity:0;
+    }
+}
+
+/* CARD */
+
+.glass{
+
+    position:relative;
+
+    width:90%;
+
+    max-width:750px;
+
+    padding:45px;
+
+    border-radius:35px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(12px);
+
+    border:
+    1px solid
+    rgba(255,255,255,0.2);
+
+    text-align:center;
+
+    color:white;
+
+    z-index:10;
+
+    box-shadow:
+    0 0 40px
+    rgba(255,255,255,0.1);
+}
+
+h1{
+
+    font-size:4rem;
+
+    color:white;
+
+    text-shadow:
+    0 0 15px #ff66c4,
+    0 0 40px #ff66c4;
+}
+
+h2{
+
+    margin-top:10px;
+
+    font-size:2.5rem;
+
+    color:#ffc2e8;
+}
+
+#typing{
+
+    margin-top:25px;
+
+    font-size:1.3rem;
+
+    min-height:50px;
+
+    line-height:1.7;
+}
+
+/* HEART */
+
+.heart-circle{
+
+    width:170px;
+    height:170px;
+
+    border-radius:50%;
+
+    margin:35px auto;
+
+    background:
+    linear-gradient(
+    135deg,
+    #ff5ebc,
+    #ffc2e8
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:4rem;
+
+    box-shadow:
+    0 0 35px
+    rgba(255,255,255,0.5);
+
+    animation:
+    bounce 2s infinite;
+}
+
+@keyframes bounce{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* BUTTON */
+
+button{
+
+    margin-top:15px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#ff4da6;
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:0.4s;
+
+    box-shadow:
+    0 0 20px
+    rgba(255,77,166,0.6);
+}
+
+button:hover{
+
+    transform:scale(1.08);
+}
+
+/* MESSAGE */
+
+#hiddenMessage{
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+    transition:2s;
+
+    margin-top:35px;
+
+    line-height:2;
+
+    font-size:1.15rem;
+}
+
+/* FIREWORKS */
+
+canvas{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="moon">
+
+    <span>
+        Prudence ❤️<br>
+        You Are<br>
+        Truly Special ✨
+    </span>
+
+</div>
+
+<div class="stars"></div>
+
+<div class="glass">
+
+    <h1>For Prudence ❤️</h1>
+
+    <h2>
+        A Beautiful Soul 🌸
+    </h2>
+
+    <p id="typing"></p>
+
+    <div class="heart-circle">
+        ❤️
+    </div>
+
+    <button id="surpriseBtn">
+        Open My Heart ✨
+    </button>
+
+    <div id="hiddenMessage">
+
+        <h3>💌 A Message For You</h3>
+
+        <br>
+
+        <p>
+            Some people are beautiful
+            not only by appearance,
+            but by the way they smile,
+            speak and make others feel 🌸
+        </p>
+
+        <br>
+
+        <p>
+            Prudence,
+            you are one of those rare people ❤️
+        </p>
+
+        <br>
+
+        <p>
+            Your presence feels peaceful,
+            your smile feels warm,
+            and your energy is unforgettable ✨
+        </p>
+
+        <br>
+
+        <p>
+            And no matter how long
+            the journey may feel,
+            I’ll remain patient because
+            I believe there are beautiful
+            and big things waiting for us
+            in the future ❤️✨
+        </p>
+
+    </div>
+
+</div>
+
+<canvas id="fireworks"></canvas>
+
+<script>
+
+/* TYPING EFFECT */
+
+const text =
+"Sometimes someone comes into your life and makes everything feel softer and brighter ❤️";
+
+const typing =
+document.getElementById("typing");
+
+let i = 0;
+
+function typeWriter(){
+
+    if(i < text.length){
+
+        typing.innerHTML +=
+        text.charAt(i);
+
+        i++;
+
+        setTimeout(typeWriter,70);
+    }
+}
+
+typeWriter();
+
+/* STARS */
+
+const starsContainer =
+document.querySelector(".stars");
+
+for(let i = 0; i < 150; i++){
+
+    const star =
+    document.createElement("div");
+
+    star.classList.add("star");
+
+    star.style.left =
+    Math.random() * 100 + "%";
+
+    star.style.top =
+    Math.random() * 100 + "%";
+
+    star.style.animationDuration =
+    (Math.random() * 3 + 2) + "s";
+
+    starsContainer.appendChild(star);
+}
+
+/* FLOATING HEARTS */
+
+function createFloat(){
+
+    const items =
+    ["❤️","💖","✨","🌸"];
+
+    const float =
+    document.createElement("div");
+
+    float.classList.add("float");
+
+    float.innerHTML =
+    items[Math.floor(
+        Math.random()*items.length
+    )];
+
+    float.style.left =
+    Math.random()*100 + "vw";
+
+    float.style.fontSize =
+    (Math.random()*15 + 18) + "px";
+
+    float.style.position =
+    "fixed";
+
+    document.body.appendChild(float);
+
+    setTimeout(()=>{
+
+        float.remove();
+
+    },6000);
+}
+
+setInterval(createFloat,900);
+
+/* BUTTON */
+
+const btn =
+document.getElementById("surpriseBtn");
+
+const msg =
+document.getElementById("hiddenMessage");
+
+let clickCount = 0;
+
+btn.addEventListener("click",()=>{
+
+    clickCount++;
+
+    /* FIRST CLICK */
+
+    if(clickCount === 1){
+
+        msg.style.opacity = "1";
+
+        msg.style.transform =
+        "translateY(0px)";
+
+        fireworks();
+
+        btn.innerHTML =
+        "Click Again ❤️";
+    }
+
+    /* SECOND CLICK */
+
+    else if(clickCount === 2){
+
+        msg.innerHTML = `
+
+        <h1 style="
+        color:#ff66c4;
+        font-size:4rem;
+        text-shadow:
+        0 0 20px #ff66c4,
+        0 0 40px #ff66c4;
+        ">
+        Prudence I Love You ❤️
+        </h1>
+
+        <br>
+
+        <p style="
+        font-size:1.5rem;
+        line-height:2;
+        ">
+        No matter what happens,
+        my heart will always have
+        something special for you ✨
+        </p>
+
+        `;
+
+        fireworks();
+
+        fireworks();
+
+        btn.innerHTML =
+        "Forever ❤️";
+    }
+});
+
+/* FIREWORKS */
+
+const canvas =
+document.getElementById("fireworks");
+
+const ctx =
+canvas.getContext("2d");
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+window.addEventListener("resize",()=>{
+
+    canvas.width =
+    window.innerWidth;
+
+    canvas.height =
+    window.innerHeight;
+});
+
+let particles = [];
+
+class Particle{
+
+    constructor(x,y,color){
+
+        this.x = x;
+        this.y = y;
+
+        this.color = color;
+
+        this.radius =
+        Math.random()*3 + 2;
+
+        this.speedX =
+        (Math.random()-0.5)*10;
+
+        this.speedY =
+        (Math.random()-0.5)*10;
+
+        this.life = 120;
+    }
+
+    update(){
+
+        this.x += this.speedX;
+
+        this.y += this.speedY;
+
+        this.life--;
+
+        this.radius *= 0.98;
+    }
+
+    draw(){
+
+        ctx.beginPath();
+
+        ctx.arc(
+            this.x,
+            this.y,
+            this.radius,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+        this.color;
+
+        ctx.shadowBlur = 15;
+
+        ctx.shadowColor =
+        this.color;
+
+        ctx.fill();
+    }
+}
+
+function createExplosion(x,y){
+
+    const colors = [
+        "#ff4da6",
+        "#ffffff",
+        "#ffc2e8",
+        "#ff99cc"
+    ];
+
+    for(let i = 0; i < 180; i++){
+
+        particles.push(
+
+            new Particle(
+
+                x,
+                y,
+
+                colors[
+                    Math.floor(
+                        Math.random()
+                        * colors.length
+                    )
+                ]
+            )
+        );
+    }
+}
+
+function fireworks(){
+
+    for(let i = 0; i < 10; i++){
+
+        setTimeout(()=>{
+
+            const x =
+            Math.random()
+            * canvas.width;
+
+            const y =
+            Math.random()
+            * canvas.height/2;
+
+            createExplosion(x,y);
+
+        }, i * 300);
+    }
+}
+
+function animate(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    particles =
+    particles.filter(
+    particle => particle.life > 0
+    );
+
+    particles.forEach(particle => {
+
+        particle.update();
+
+        particle.draw();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+
+</body>
+</html>
